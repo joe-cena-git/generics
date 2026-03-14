@@ -61,8 +61,8 @@ Add a comment ending in `----` (four dashes) to create a navigable section. Nest
 
 ```rust
 // Top-level section ----
-    // Second-level section ----
-        //// Third-level section ----
+//// Second-level section ----
+////// Third-level section ----
 ```
 
 Every section marker in `main.rs` follows this pattern, for example:
@@ -72,7 +72,7 @@ Every section marker in `main.rs` follows this pattern, for example:
 // 10-6 A Point<T> struct that holds x and y values of type T ----
 ```
 
-> The line **must** end with `----` to be recognised by Code Organizer.
+> The line **must** end with `----` to be recognized by Code Organizer.
 
 ## Reference
 
