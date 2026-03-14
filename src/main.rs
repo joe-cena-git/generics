@@ -150,6 +150,91 @@ fn main() {
         // let wont_work = Point { x: 5, y: 4.0 };
     }
 
-    
+    // 10-8 A Point<T, U> generic over two types so that x and y can be values of different types ----
+    {
+        struct Point<T, U> {
+            x: T,
+            y: U,
+        }
+
+        let both_integer = Point { x: 5, y: 10 };
+        let both_float = Point { x: 1.0, y: 4.0 };
+        let integer_and_float = Point { x: 5, y: 4.0 };
+
+        // You can use as many generic type parameters in a definition as you want,
+        // but using more than a few makes your code hard to read.
+        // If you’re finding you need lots of generic types in your code,
+        // it could indicate that your code needs restructuring into smaller pieces.
+    }
+
+    // In Enum definitions
+    {
+        // The Option<T> enum:
+        enum Option<T> {
+            Some(T),
+            None,
+        }
+
+        // The Result<T, E> enum:
+        enum Result<T, E> {
+            Ok(T),
+            Err(E),
+        }
+    }
+
+    // 10-9 Implementing a method named x on the Point<T> struct that will return a reference to the x field of type T ----
+    {
+        struct Point<T> {
+            x: T,
+            y: T,
+        }
+
+        impl<T> Point<T> {
+            fn x(&self) -> &T {
+                &self.x
+            }
+        }
+
+        let p = Point { x: 5, y: 10 };
+        println!("p.x = {}", p.x());
+    }
+
+    // 10-10 An impl block that only applies to a struct with a particular concrete type for the generic type parameter T ----
+    {
+         struct Point<T> {
+            x: T,
+            y: T,
+        }
+
+        impl Point<f32> {
+            fn distance_from_origin(&self) -> f32 {
+                (self.x.powi(2) + self.y.powi(2).sqrt())
+            }
+        }
+    }
+
+    // 10-11 A method that uses generic types that are different from its struct's definition ----
+    {
+        struct Point<X1, Y1> {
+            x: X1,
+            y: Y1,
+        }
+
+        impl<X1, Y1> Point<X1, Y1> {
+            fn mixup<X2, Y2>(self, other: Point<X2, Y2>) -> Point<X1, Y2> {
+                Point {
+                    x: self.x,
+                    y: other.y,
+                }
+            }
+        }
+
+        let p1 = Point { x: 5, y: 10.4 };
+        let p2 = Point { x: "Hello", y: 'c' };
+
+        let p3 = p1.mixup(p2);
+
+        println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+    }
 
 }
