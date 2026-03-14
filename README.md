@@ -53,7 +53,7 @@ cargo run
 
 This project uses the [**Code Organizer**](https://marketplace.visualstudio.com/items?itemName=ran-codes.code-organizer) VS Code extension to navigate the listings directly from the sidebar.
 
-![Code Organizer sidebar showing all 11 listings](assets/code-organizer.png)
+![Code Organizer sidebar showing all 11 listings](assets/code-organizer.PNG)
 
 ### Syntax
 
