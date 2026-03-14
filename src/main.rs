@@ -104,5 +104,52 @@ fn main() {
         println!("The largest char is {result}");
     }
 
+    // 10-5 The largest function using generic type parameters; this doesn't compile yet ----
+    {
+        // fn largest<T>(list: &[T]) -> &T {
+        //     let mut largest = &list[0];
+
+        //     for item in list {
+        //         if item > largest { // Error: consider restricting type parameter `T` with trait `PartialOrd`
+        //             largest = item;
+        //         }
+        //     }
+
+        //     largest
+        // }
+
+        // let number_list = vec![34, 50, 25, 100, 65];
+
+        // let result = largest(&number_list);
+        // println!("The largest number is {result}");
+
+        // let char_list = vec!['y', 'm', 'a', 'q'];
+
+        // let result = largest(&char_list);
+        // println!("The largest char is {result}");
+    }
+
+    // 10-6 A Point<T> struct that holds x and y values of type T ----
+    {
+        struct Point<T> {
+            x: T,
+            y: T,
+        }
+
+        let integer = Point { x: 5, y: 10 };  // Point<i32>
+        let float = Point { x: 1.0, y: 4.0 }; // Point<f64>
+    }
+
+    // 10-7 The fields x and y must be the same type because both have the same generic data type T ----
+    {
+        // struct Point<T> {
+        //     x: T,
+        //     y: T,
+        // }
+
+        // let wont_work = Point { x: 5, y: 4.0 };
+    }
+
+    
 
 }
